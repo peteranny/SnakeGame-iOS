@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     var isGameStarted = false
     
     let sideLength = 12
+    var timeInterval: TimeInterval = 1
     
     func createFruit() -> Fruit {
         let x = Int.random(in: 0..<sideLength)
@@ -86,7 +87,7 @@ class ViewController: UIViewController {
 
     func startTimer() {
         timer = Timer.scheduledTimer(
-            timeInterval: 1,
+            timeInterval: timeInterval,
             target: self,
             selector: #selector(refresh),
             userInfo: nil,
@@ -136,6 +137,18 @@ class ViewController: UIViewController {
         case .right: changeSnakeDirection(.right)
         default: break
         }
+    }
+    
+    @IBAction func didTapSlowerButton(_ sender: UIButton) {
+        timeInterval = min(1, timeInterval + 0.1)
+        stopTimer()
+        startTimer()
+    }
+    
+    @IBAction func didTapFasterButton(_ sender: UIButton) {
+        timeInterval = max(0.1, timeInterval - 0.1)
+        stopTimer()
+        startTimer()
     }
 }
 
