@@ -16,14 +16,16 @@ class ViewController: UIViewController {
     
     var timer: Timer!
     var isGameStarted = false
-
-    static func createFruit() -> Fruit {
-        let x = Int.random(in: 0...10)
-        let y = Int.random(in: 0...10)
+    
+    let sideLength = 12
+    
+    func createFruit() -> Fruit {
+        let x = Int.random(in: 0..<sideLength)
+        let y = Int.random(in: 0..<sideLength)
         return Fruit(position: Position(x: x, y: y))
     }
     
-    static func isFruit(_ fruit: Fruit, overlappedWith snake: Snake) -> Bool {
+    func isFruit(_ fruit: Fruit, overlappedWith snake: Snake) -> Bool {
         for position in snake.positions {
             if position.x == fruit.position.x, position.y == fruit.position.y {
                 return true
@@ -98,13 +100,13 @@ class ViewController: UIViewController {
     }
     
     func setSnake() {
-        snake = Snake()
+        snake = Snake(sideLength: sideLength)
     }
 
     func setNextFruit() {
-        var fruit: Fruit = ViewController.createFruit()
-        while ViewController.isFruit(fruit, overlappedWith: snake) {
-            fruit = ViewController.createFruit()
+        var fruit: Fruit = createFruit()
+        while isFruit(fruit, overlappedWith: snake) {
+            fruit = createFruit()
         }
         self.fruit = fruit
     }

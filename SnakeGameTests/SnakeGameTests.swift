@@ -11,7 +11,7 @@ import XCTest
 
 class SnakeGameTests: XCTestCase {
     func testInit() {
-        let snake = Snake()
+        let snake = Snake(sideLength: 10)
         XCTAssertEqual(snake.length, 3)
         XCTAssertEqual(snake.direction, .right)
         XCTAssertEqual(snake.positions.count, 3)
@@ -24,7 +24,7 @@ class SnakeGameTests: XCTestCase {
     }
     
     func testMovingForward() {
-        let snake = Snake()
+        let snake = Snake(sideLength: 10)
         snake.moveForward()
         XCTAssertEqual(snake.length, 3)
         XCTAssertEqual(snake.direction, .right)
@@ -74,7 +74,7 @@ class SnakeGameTests: XCTestCase {
     }
 
     func testGrowUp() {
-        let snake = Snake()
+        let snake = Snake(sideLength: 10)
         snake.growUp()
         XCTAssertEqual(snake.length, 4)
         XCTAssertEqual(snake.direction, .right)
@@ -114,7 +114,7 @@ class SnakeGameTests: XCTestCase {
     }
     
     func testHitBody() {
-        let snake = Snake()
+        let snake = Snake(sideLength: 10)
         snake.growUp()
         snake.growUp()
         snake.moveForward()
@@ -128,5 +128,20 @@ class SnakeGameTests: XCTestCase {
         snake.direction = .up
         snake.moveForward()
         XCTAssertEqual(snake.hasHitBody(), true)
+    }
+    
+    func testHitSide() {
+        let snake = Snake(sideLength: 4)
+        snake.moveForward()
+        snake.moveForward()
+        XCTAssertEqual(snake.length, 3)
+        XCTAssertEqual(snake.direction, .right)
+        XCTAssertEqual(snake.positions.count, 3)
+        XCTAssertEqual(snake.positions[0].x, 0)
+        XCTAssertEqual(snake.positions[0].y, 0)
+        XCTAssertEqual(snake.positions[1].x, 3)
+        XCTAssertEqual(snake.positions[1].y, 0)
+        XCTAssertEqual(snake.positions[2].x, 2)
+        XCTAssertEqual(snake.positions[2].y, 0)
     }
 }

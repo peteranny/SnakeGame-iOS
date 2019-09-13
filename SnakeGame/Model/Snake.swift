@@ -9,11 +9,13 @@
 import Foundation
 
 class Snake {
+    let sideLength: Int
     var positions: [Position]
     var length: Int
     var direction: Direction
     
-    init() {
+    init(sideLength: Int) {
+        self.sideLength = sideLength
         positions = [
             Position(x: 2, y: 0), // head
             Position(x: 1, y: 0),
@@ -30,10 +32,10 @@ class Snake {
         var x = head.x
         var y = head.y
         switch direction {
-        case .down: y += 1
-        case .up: y -= 1
-        case .left: x -= 1
-        case .right: x += 1
+        case .down: y = (y + 1 + sideLength) % sideLength
+        case .up: y = (y - 1 + sideLength) % sideLength
+        case .left: x = (x - 1 + sideLength) % sideLength
+        case .right: x = (x + 1 + sideLength) % sideLength
         }
         positions.insert(Position(x: x, y: y), at: 0)
         if positions.count > length {
