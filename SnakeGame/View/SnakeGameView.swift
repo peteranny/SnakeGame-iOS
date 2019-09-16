@@ -8,18 +8,18 @@
 
 import UIKit
 
-protocol SnakeGameViewDataSource {
+protocol SnakeGameViewDataSource: class {
     func snakePositions(for: SnakeGameView) -> [Position]
     func fruitPosition(for: SnakeGameView) -> Position
 }
 
-protocol SnakeGameViewDelegate {
+protocol SnakeGameViewDelegate: class {
     
 }
 
 class SnakeGameView: UIView {
-    var dataSource: SnakeGameViewDataSource?
-    var delegate: SnakeGameViewDelegate?
+    weak var dataSource: SnakeGameViewDataSource?
+    weak var delegate: SnakeGameViewDelegate?
     
     let gridSize: CGFloat = 20
     
