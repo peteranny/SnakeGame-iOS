@@ -23,12 +23,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="Jx8-a9-Iud" appends="YES" id="lJC-ix-X3h"/>
-                                    <outletCollection property="gestureRecognizers" destination="kQa-gc-Pb9" appends="YES" id="M9S-IO-ZQL"/>
-                                    <outletCollection property="gestureRecognizers" destination="Dcc-kk-FeF" appends="YES" id="pXi-Nw-HaK"/>
-                                    <outletCollection property="gestureRecognizers" destination="eQ0-dY-qy5" appends="YES" id="TmF-h5-kjZ"/>
-                                </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8mW-DX-E71">
                                 <rect key="frame" x="257" y="329" width="43" height="30"/>
@@ -49,6 +43,12 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Jx8-a9-Iud" appends="YES" id="vZu-LZ-195"/>
+                            <outletCollection property="gestureRecognizers" destination="eQ0-dY-qy5" appends="YES" id="a0Z-bJ-itn"/>
+                            <outletCollection property="gestureRecognizers" destination="Dcc-kk-FeF" appends="YES" id="nwK-Lh-4LB"/>
+                            <outletCollection property="gestureRecognizers" destination="kQa-gc-Pb9" appends="YES" id="dnd-vM-F9r"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="snakeGameView" destination="JMK-tk-uqd" id="c13-9p-Tk6"/>
